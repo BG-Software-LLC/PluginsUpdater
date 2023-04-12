@@ -8,7 +8,7 @@ group 'PluginsUpdater'
 
 project.ext {
     targetFolder = file("target/")
-    buildVersion = System.getenv("BUILD_NUMBER")
+    buildVersion = System.getenv("BUILD_NUMBER") == null ? "Unknown" : "b" + System.getenv("BUILD_NUMBER")
 }
 
 repositories {
