@@ -5,11 +5,10 @@ plugins {
 }
 
 group 'PluginsUpdater'
-version = "1.0.0"
 
 project.ext {
     targetFolder = file("target/")
-    buildVersion = System.getenv("BUILD_NUMBER") == null ? version : version + "-b" + System.getenv("BUILD_NUMBER")
+    buildVersion = System.getenv("BUILD_NUMBER")
 }
 
 repositories {
@@ -44,7 +43,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.bgsoftware.common.updater'
             artifactId = 'Updater'
-            version = rootProject.version
+            version = rootProject.buildVersion
 
             from components.java
         }
